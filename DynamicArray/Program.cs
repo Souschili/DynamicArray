@@ -10,6 +10,9 @@ namespace DynamicArray
     {
         static void Main(string[] args)
         {
+            CustomArray<int> arr = new CustomArray<int>(5);
+            Console.WriteLine(arr.Length);
+
         }
     }
 }
