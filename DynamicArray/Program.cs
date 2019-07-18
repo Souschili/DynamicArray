@@ -12,7 +12,9 @@ namespace DynamicArray
         {
             int[] data = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
             CustomArray<int> arr = new CustomArray<int>(data);
+            arr.AddElem(15);
             Console.WriteLine(arr.Length);
+            arr.DisplayData();
 
         }
     }

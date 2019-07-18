@@ -8,7 +8,7 @@ namespace DynamicArray
 {
     class CustomArray <T>
     {
-        public int Length { get;} // длина ....в принципе ненужен 
+        public int Length { get; private set; } // длина ....в принципе ненужен 
         private T [] storage;     // статический массив для хранения данных
 
 
@@ -41,5 +41,36 @@ namespace DynamicArray
             this.Length = arr.Length;
         }
         #endregion
+
+        /// <summary>
+        /// Добавить элемент в конец массива
+        /// </summary>
+        /// <param name="element">Элемент типа Т</param>
+        public void AddElem(T element)
+        {
+            //Временный массив
+            T [] localData = this.storage;
+
+            this.storage = new T[++this.Length];
+            //копирование данных из временых в новый
+            for (int i = 0; i < localData.Length; i++)
+            {
+                storage[i] = localData[i];
+            }
+            this.storage[Length-1] = element;
+        }
+
+
+        /// <summary>
+        /// Вывод на консоль
+        /// </summary>
+        public void DisplayData()
+        {
+            for (int i = 0; i < Length; i++)
+            {
+                Console.Write(storage[i] + " ");
+            }
+            Console.WriteLine();
+        }
     }
 }
