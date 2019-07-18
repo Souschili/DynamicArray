@@ -10,7 +10,12 @@ namespace DynamicArray
     {
         public int Length { get; private set; } // длина ....в принципе ненужен 
         private T [] storage;     // статический массив для хранения данных
-
+        //индексатор перегрузка []
+        public T this [int i]
+        {
+            get { return storage[i];}
+            set { storage[i] = value; }
+        }
 
         #region
         /// <summary>
@@ -59,6 +64,46 @@ namespace DynamicArray
             }
             this.storage[Length-1] = element;
         }
+
+
+        /// <summary>
+        /// Добавить элемент на позицию,в данном случае элемент втискивается между соседними 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="elem"></param>
+        public void AddByIndex(int index,T elem)
+        {
+            
+
+            if(index<0 && index<Length)
+            {
+                Console.WriteLine($"{index} неверный индекс");
+            }
+            else
+            {
+                T[] localData = this.storage;
+                Length++;
+                this.storage = new T[Length];
+
+                for(int i=0,j=0;i<Length;i++,j++)
+                {
+                    if(index==i)
+                    {
+                        this.storage[i] =elem;
+                        --j;
+                        continue;
+                    }
+
+                    this.storage[i]=localData[j];
+
+                }
+            }
+        }
+
+        
+        
+            
+
 
 
         /// <summary>

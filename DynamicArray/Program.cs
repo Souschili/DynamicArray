@@ -12,9 +12,16 @@ namespace DynamicArray
         {
             int[] data = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
             CustomArray<int> arr = new CustomArray<int>(data);
-            arr.AddElem(15);
-            Console.WriteLine(arr.Length);
+           //arr.AddElem(15);
+            Console.WriteLine($"Длина массива до {arr.Length}");
+            //arr.DisplayData();
+            //Console.WriteLine(arr[15]);
+            arr.AddByIndex(2, 777);
             arr.DisplayData();
+            arr.AddByIndex(0, 42);
+            arr.DisplayData();
+            Console.WriteLine($"Длина массива после {arr.Length}");
+
 
         }
     }
