@@ -75,7 +75,7 @@ namespace DynamicArray
         {
             
 
-            if(index<0 && index<Length)
+            if(index<0 || index>Length)
             {
                 Console.WriteLine($"{index} неверный индекс");
             }
@@ -100,11 +100,34 @@ namespace DynamicArray
             }
         }
 
-        
-        
-            
+        /// <summary>
+        /// Удалить элемент с указаной позиции
+        /// </summary>
+        /// <param name="index">Номер позиции</param>
+        public void RemoveAt(int index)
+        {
+            if (index < 0 || index > Length)
+            {
+                Console.WriteLine($"{index} неверный индекс");
+            }
+            else
+            {
+                T[] localData = this.storage;
+                Length--;
+                this.storage = new T[Length];
+                for (int i = 0,j=0; i < Length; )
+                {
+                    if(j==index)
+                    {
+                        ++j;
+                        continue;
+                    }
+                    this.storage[i++] = localData[j++];
+                }
+            }
 
-
+        }
+        
 
         /// <summary>
         /// Вывод на консоль

@@ -17,11 +17,13 @@ namespace DynamicArray
             //arr.DisplayData();
             //Console.WriteLine(arr[15]);
             arr.AddByIndex(2, 777);
-            arr.DisplayData();
-            arr.AddByIndex(0, 42);
+            arr.AddByIndex(0, 555);
             arr.DisplayData();
             Console.WriteLine($"Длина массива после {arr.Length}");
-
+            arr.RemoveAt(0);
+            arr.RemoveAt(2);
+            arr.DisplayData();
+            Console.WriteLine($"Длина массива после {arr.Length}");
 
         }
     }
